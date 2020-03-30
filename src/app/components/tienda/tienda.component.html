@@ -1,0 +1,61 @@
+<div class="col-lg-12" [@fadeIn]>
+    <button class="boton_activo btn btn-success" [@marcar]="status" (click)="cambiarEstado()">
+        <span *ngIf="status == 'inactive' ">Botón Inactivo</span>
+        <span *ngIf="status == 'active' ">Botón Activo</span></button>
+
+
+    <hr>
+    <h4>Animaciones CSS3</h4>
+    <a class="boton_transiciones">Transiciones</a>
+
+    <div class="clearfix"></div>
+
+    <div class="caja_animada">
+
+    </div>
+
+    <h4>Utilizar Jquery Dentro de Angular</h4>
+    <button id="botonjq">Mostrar Textos</button>
+    <p id="textojq">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel obcaecati vitae laborum ex distinctio? Debitis excepturi quasi at repellat, ipsum consequuntur, recusandae magnam, odit quam dolorum vel. Veniam, hic eos!
+    </p>
+    <div id="caja" style="border: 1px solid black; width: 150px; height: 50px">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel obcaecati vitae laborum ex distinctio? Debitis excepturi quasi at repellat, ipsum consequuntur, recusandae magnam, odit quam dolorum vel. Veniam, hic eos!
+    </div>
+
+    <editor (onGetContent)="textoRichEditor($event)" id="descripcionTienda" apiKey="test" [init]="{plugins: 'link'}"></editor>
+    {{textoArea}}
+    <hr> Padre:
+    <h1>{{ titulo }}</h1>
+    <ul>
+        <li>Camisa roja</li>
+        <li>Gorra negra</li>
+    </ul>
+
+
+    <p>
+        Nombre del parque:
+        <input type="text" [(ngModel)]="nombreDelParque" (keyup)="mostrarNombre()" />
+    </p>
+    <p>
+        Resultado: {{ nombreDelParque }}
+    </p>
+
+    <div *ngIf="miParque">
+        <h4>Datos de miParque desde el Hijo</h4>
+        <ol>
+            <li>{{ miParque.nombre }}</li>
+            <li>{{ miParque.metros }}</li>
+            <li>{{ miParque.vegetacion }}</li>
+            <li>{{ miParque.abierto }}</li>
+        </ol>
+    </div>
+
+
+
+    <hr/>
+    <p *ngIf="nombreDelParque">
+        Hijo:
+        <app-parques [nombre]="nombreDelParque" [metros_cuadrados]="567" (pasameLosDatos)="verDatosParque($event)"></app-parques>
+    </p>
+</div>

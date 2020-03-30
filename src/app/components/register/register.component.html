@@ -1,0 +1,45 @@
+<div class="col-lg-6">
+    <h1>{{ title }}</h1>
+
+    <div *ngIf="status == 'success'" class="alert alert-success">
+        Registro Completado Correctamente, <a [routerLink]="['/login']">Identificate aquí</a>.
+    </div>
+    <div *ngIf="status == 'error'" class="alert alert-danger">
+        No te has Registrado correctamente.
+    </div>
+
+    <form #registerForm="ngForm" (ngSubmit)="onSubmit()" class="col-lg-10">
+        <p>
+            <label>Nombre</label>
+            <input type="text" name="name" #name="ngModel" [(ngModel)]="user.name" class="form-control" required />
+            <span *ngIf="!name.valid && name.touched">
+                ¡El Nombre es obligatorio!
+            </span>
+        </p>
+
+        <p>
+            <label>Apellidos</label>
+            <input type="text" name="surname" #surname="ngModel" [(ngModel)]="user.surname" class="form-control" required />
+            <span *ngIf="!surname.valid && surname.touched">
+                ¡El Apellido es obligatorio!
+            </span>
+        </p>
+
+        <p>
+            <label>Correo Electrónico</label>
+            <input type="email" name="email" #email="ngModel" [(ngModel)]="user.email" class="form-control" required />
+            <span *ngIf="!email.valid && email.touched">
+                ¡El Correo Electrónico debe ser correcto!
+            </span>
+        </p>
+
+        <p>
+            <label>Contraseña</label>
+            <input type="password" name="password" #password="ngModel" [(ngModel)]="user.password" class="form-control" required />
+            <span *ngIf="!password.valid && password.touched">
+                ¡La Contraseña es obligatoria!
+            </span>
+        </p>
+        <input type="submit" title="{{title}}" class="btn btn-primary" [disabled]="!registerForm.form.valid" />
+    </form>
+</div>

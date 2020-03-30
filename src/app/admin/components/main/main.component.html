@@ -1,0 +1,26 @@
+<div class="container">
+    <h3>{{title}}</h3>
+    <hr>
+    <div class="row">
+        <div class="col-md-3">
+            <ul class="nav nav-pills flex-column nav-p" role="tablist">
+                <li class="nav-item">
+                    <a routerLinkActive="active" class="nav-link" id="home-tab" data-toggle="tab" [routerLink]="['listado']" role="tab" aria-controls="home">Listado</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLinkActive="active" class="nav-link" id="profile-tab" data-toggle="tab" [routerLink]="['crear']" role="tab" aria-controls="profile">Crear</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLinkActive="active" class="nav-link" id="profile-tab" data-toggle="tab" [routerLink]="['editar']" role="tab" aria-controls="profile">Información</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-md-9">
+            <div class="tab-content" id="myTabContent">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+
+    </div>
+</div>
