@@ -35,7 +35,10 @@
                         </a>
                     </li>
                 </ul>
-                <ul class="navbar-nav navbar-right">
+                <!-- MENU DEL REGISTER DEL LADO DERECHO-->
+                <!-- SI EL USER NO ESTA LOGUEADO OSEA NO EXISTE IDENTITY ENTONCES MUESTRA ESTO : -->
+
+                <ul class="navbar-nav navbar-right" *ngIf="!identity">
                     <li>
                         <a [routerLink]="['/registro']" [routerLinkActive]="['activo']">
                             <i class="material-icons">person</i>Registro
@@ -45,6 +48,41 @@
                         <a [routerLink]="['/login']" [routerLinkActive]="['activo']">
                             <i class="material-icons">camera_rear</i>Login
                         </a>
+                    </li>
+                </ul>
+                <!-- SI EL USER  ESTA LOGUEADO OSEA EXISTA IDENTITY ENTONCES MUESTRA ESTO : -->
+
+                <ul class="navbar-nav navbar-right login" *ngIf="identity">
+                    <li class="avatar">
+                        <img src="{{ url + 'get-image-file/' + identity.image }}" />
+
+                    </li>
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            {{ identity.name }} <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+
+                            <li *ngIf="identity.role == 'ROLE_ADMIN'">
+                                <a [routerLink]="['/admin-panel']">
+                                    <i class="material-icons">business_center
+                                    </i>Administración
+                                </a>
+                            </li>
+
+                            <li>
+                                <a [routerLink]="['/mis-datos']">
+                                    <i class="material-icons">toc</i>Mis Datos
+                                </a>
+                            </li>
+                            <li>
+                                <a class="pointer" (click)="logout()">
+                                    <i class="material-icons">trending_flat</i>Salir
+                                </a>
+                            </li>
+
+                        </ul>
                     </li>
                 </ul>
 

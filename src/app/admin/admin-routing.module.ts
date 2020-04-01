@@ -7,10 +7,14 @@ import { EditComponent } from './components/edit/edit.component';
 import { ListComponent } from './components/list/list.component';
 import { AddComponent } from './components/add/add.component';
 
+import { AdminGuard } from '../services/admin.guard';
+
 const adminRoutes: Routes = [
     {
         path: 'admin-panel',
         component: MainComponent,
+        // AdminGuard protege a que tenga accesso solo el ROLE_ADMIN
+        canActivate: [AdminGuard],
         children: [
             { path: '', redirectTo: 'listado', pathMatch: 'full' },
             { path: 'listado', component: ListComponent },
