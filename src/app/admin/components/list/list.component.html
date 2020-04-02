@@ -10,19 +10,41 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let n of numbers; let i = index">
-                <td>Oso Panda {{i+1}}</td>
-                <td>2202</td>
+            <tr *ngFor="let animal of animals">
+                <td> {{ animal.name }} </td>
+                <td> {{ animal.year }} </td>
                 <td>
-                    <button class="btn btn-sm btn-success">
+                    <button [routerLink]="['/animal', animal._id]" class="btn btn-sm btn-success">
                         <span class="material-icons">visibility</span>Ver 
                     </button>
-                    <button class="btn btn-sm btn-primary">
+                    <button [routerLink]="['/admin-panel/editar', animal._id]" class="btn btn-sm btn-primary">
                         <span class="material-icons">edit</span>Editar
                     </button>
-                    <button class="btn btn-sm btn-danger">
+                    <a href="#myModal-{{animal._id}}" data-toggle="modal" class="btn btn-sm btn-danger">
                         <span class="material-icons">delete</span>Borrar
-                    </button>
+                    </a>
+                    <!--  POPUP DE CONFIRMACION PARA BORRAR-->
+                    <div id="myModal-{{animal._id}}" class="modal" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Estas seguro?</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Seguro que quieres eliminar el animal <strong> {{ animal.name }} ?</strong></p>
+                                    <p class="text-warning"> <small>Si borras este animal no podrás recuperarlo</small> </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" (click)="deleteAnimal(animal._id)" data-dismiss="modal">Borrar</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- FIN DE POPUP DE CONFIRMACION PARA BORRAR-->
                 </td>
             </tr>
         </tbody>

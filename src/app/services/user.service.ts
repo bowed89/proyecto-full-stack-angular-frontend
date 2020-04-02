@@ -43,6 +43,8 @@ export class UserService {
     return this.identity;
   }
 
+  
+
   getToken() {
     const token = localStorage.getItem('token');
 
