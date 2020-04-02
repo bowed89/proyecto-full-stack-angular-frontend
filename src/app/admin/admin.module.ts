@@ -11,16 +11,18 @@ import { EditComponent } from './components/edit/edit.component';
 import { ListComponent } from './components/list/list.component';
 import { AddComponent } from './components/add/add.component';
 
-// Guards
+// Servicios
 import { AdminGuard } from '../services/admin.guard';
 import { UserService } from '../services/user.service';
+import { SearchPipe } from './pipes/search.pipe';
 
 @NgModule({
     declarations: [
         MainComponent,
         ListComponent,
         AddComponent,
-        EditComponent
+        EditComponent,
+        SearchPipe
     ],
     imports: [
         CommonModule,

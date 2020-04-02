@@ -60,6 +60,17 @@ body {
     margin-right: 15px;
 }
 
+.animal-imagen-mask {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.animal-imagen-mask img {
+    width: 300px;
+    height: 500px;
+}
+
 .avatar img {
     width: 45px;
     height: 45px;
